@@ -73,8 +73,7 @@ public class Rectangle implements DrawableShape {
 
     @Override
     public void draw(GraphicsContext graphicsContext) {
-        graphicsContext.setFill(Color.RED);
-        graphicsContext.setStroke(Color.BLUE);
+        graphicsContext.setFill(Color.YELLOW);
         graphicsContext.fillRect(this.point.getX(), this.point.getY(), this.width,this.height);
     }
 }
