@@ -13,8 +13,8 @@ public class Matrix3 {
 
     public Matrix3(double[][] values) {
         this.values = new double[values.length][values[0].length];
-        for(int x=0; x < values.length; x++){
-            for(int y = 0; y < values[x].length; y++){
+        for (int x = 0; x < values.length; x++) {
+            for (int y = 0; y < values[x].length; y++) {
                 this.values[x][y] = values[x][y];
             }
         }
@@ -25,11 +25,25 @@ public class Matrix3 {
     }
 
     public Matrix3 mult(Matrix3 matrix) {
-        return new Matrix3();
+        double[][] newMatrixValues = new double[3][3];
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                for (int k = 0; k < 3; k++) {
+                    newMatrixValues[i][j] += this.values[i][k] * matrix.getValues()[k][j];
+                }
+            }
+        }
+        return new Matrix3(newMatrixValues);
     }
 
     public Vector3 mult(Vector3 vector) {
-        return new Vector3();
+        double[] newVectorValues = new double[3];
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                newVectorValues[i] += vector.getValues()[i] * this.values[i][j];
+            }
+        }
+        return new Vector3(newVectorValues);
     }
 
     public double[][] getValues() {
