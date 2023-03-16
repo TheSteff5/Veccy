@@ -7,14 +7,17 @@ public class Rectangle implements DrawableShape {
     private Point point;
     private int width;
     private int height;
-
     private Color fillColor;
-    private Color strokeColor;
 
     public Rectangle(Point point, int width, int height) {
         this.point = point;
         this.width = width;
         this.height = height;
+    }
+
+    public Rectangle(Point point, int width, int height, Color fillColor) {
+        this(point, width, height);
+        this.fillColor = fillColor;
     }
 
     public int area() {
@@ -53,7 +56,9 @@ public class Rectangle implements DrawableShape {
         return height;
     }
 
-    public void setHeight(int height) { this.height = height; }
+    public void setHeight(int height) {
+        this.height = height;
+    }
 
     public Color getFillColor() {
         return fillColor;
@@ -63,17 +68,9 @@ public class Rectangle implements DrawableShape {
         this.fillColor = fillColor;
     }
 
-    public Color getStrokeColor() {
-        return strokeColor;
-    }
-
-    public void setStrokeColor(Color strokeColor) {
-        this.strokeColor = strokeColor;
-    }
-
     @Override
     public void draw(GraphicsContext graphicsContext) {
-        graphicsContext.setFill(Color.YELLOW);
-        graphicsContext.fillRect(this.point.getX(), this.point.getY(), this.width,this.height);
+        graphicsContext.setFill(this.fillColor);
+        graphicsContext.fillRect(this.point.getX(), this.point.getY(), this.width, this.height);
     }
 }
