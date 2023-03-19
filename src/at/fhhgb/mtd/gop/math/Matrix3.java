@@ -40,7 +40,7 @@ public class Matrix3 {
         double[] newVectorValues = new double[3];
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                newVectorValues[i] += vector.getValues()[i] * this.values[i][j];
+                newVectorValues[i] += this.values[i][j] * vector.getValues()[j];
             }
         }
         return new Vector3(newVectorValues);
