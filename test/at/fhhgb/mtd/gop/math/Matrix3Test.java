@@ -43,12 +43,13 @@ class Matrix3Test {
         assertTrue(Arrays.deepEquals(first_m3.mult(second_m3).getValues(), matrixSolution));
 
 
-        double[] vector = {1.0, 1.0, 1.0};
-        double[] vectorSolution = {6.0, 8.0, 7.0};
         Matrix3 third_m3 = new Matrix3(matrix3);
-        Vector3 v3 = new Vector3(vector);
+        Vector3 v3 = new Vector3(new double[]{2.0, 5.0, 1.0});
 
         // multiplication with Matrix and Vector
-        assertTrue(Arrays.equals(third_m3.mult(v3).getValues(), vectorSolution));
+        assertTrue(Arrays.equals(third_m3.mult(v3).getValues(), new double[]{16.0, 21.0, 15.0}));
+
+        v3 = new Vector3(new double[]{1.0, 2.0, 1.0});
+        assertTrue(Arrays.equals(third_m3.mult(v3).getValues(), new double[]{8.0, 11.0, 8.0}));
     }
 }
