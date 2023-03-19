@@ -1,5 +1,9 @@
 package at.fhhgb.mtd.gop.veccy;
 
+import at.fhhgb.mtd.gop.at.fhhgb.mtd.gop.veccy.features.CircleFeature;
+import at.fhhgb.mtd.gop.at.fhhgb.mtd.gop.veccy.features.LineFeature;
+import at.fhhgb.mtd.gop.at.fhhgb.mtd.gop.veccy.features.PointFeature;
+import at.fhhgb.mtd.gop.at.fhhgb.mtd.gop.veccy.features.RectangleFeature;
 import at.fhhgb.mtd.gop.veccy.model.CanvasModel;
 import at.fhhgb.mtd.gop.veccy.shapes.Line;
 import at.fhhgb.mtd.gop.veccy.shapes.Point;
@@ -18,7 +22,18 @@ public class Veccy extends Application {
         VeccyGUI veccyGUI = new VeccyGUI(stage);
         CanvasModel model = veccyGUI.getModel();
 
-        double y;
+        RectangleFeature rectangleF = new RectangleFeature(model);
+        CircleFeature circleF = new CircleFeature();
+        LineFeature lineF = new LineFeature();
+        PointFeature pointF = new PointFeature();
+
+
+        model.addFeature(rectangleF);
+        model.addFeature(circleF);
+        model.addFeature(lineF);
+        model.addFeature(pointF);
+
+        /*double y;
         Rectangle[] sinus1 = new Rectangle[2000];
         Rectangle[] sinus2 = new Rectangle[2000];
         for (int x = 0; x < 2000; x++) {
@@ -32,6 +47,6 @@ public class Veccy extends Application {
 
         for (int x = 0; x < 2000; x += 4) {
             model.addShape(new Line(sinus1[x].getPoint().getX(), sinus1[x].getPoint().getY(), sinus2[x].getPoint().getX(), sinus2[x].getPoint().getY(), Color.RED));
-        }
+        }*/
     }
 }
