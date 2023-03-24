@@ -1,15 +1,11 @@
 package at.fhhgb.mtd.gop.veccy;
 
-import at.fhhgb.mtd.gop.at.fhhgb.mtd.gop.veccy.features.CircleFeature;
-import at.fhhgb.mtd.gop.at.fhhgb.mtd.gop.veccy.features.LineFeature;
-import at.fhhgb.mtd.gop.at.fhhgb.mtd.gop.veccy.features.PointFeature;
-import at.fhhgb.mtd.gop.at.fhhgb.mtd.gop.veccy.features.RectangleFeature;
+import at.fhhgb.mtd.gop.veccy.features.CircleFeature;
+import at.fhhgb.mtd.gop.veccy.features.LineFeature;
+import at.fhhgb.mtd.gop.veccy.features.PointFeature;
+import at.fhhgb.mtd.gop.veccy.features.RectangleFeature;
 import at.fhhgb.mtd.gop.veccy.model.CanvasModel;
-import at.fhhgb.mtd.gop.veccy.shapes.Line;
-import at.fhhgb.mtd.gop.veccy.shapes.Point;
-import at.fhhgb.mtd.gop.veccy.shapes.Rectangle;
 import javafx.application.Application;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class Veccy extends Application {
@@ -23,9 +19,9 @@ public class Veccy extends Application {
         CanvasModel model = veccyGUI.getModel();
 
         RectangleFeature rectangleF = new RectangleFeature(model);
-        CircleFeature circleF = new CircleFeature();
-        LineFeature lineF = new LineFeature();
-        PointFeature pointF = new PointFeature();
+        CircleFeature circleF = new CircleFeature(model);
+        LineFeature lineF = new LineFeature(model);
+        PointFeature pointF = new PointFeature(model);
 
 
         model.addFeature(rectangleF);

@@ -53,7 +53,7 @@ public class Point implements DrawableShape {
     @Override
     public void draw(GraphicsContext graphicsContext) {
         graphicsContext.setFill(this.fillColor);
-        graphicsContext.fillOval(this.x, this.y, 1, 1);
+        graphicsContext.fillOval(this.x, this.y, 4, 4);
     }
 
 }

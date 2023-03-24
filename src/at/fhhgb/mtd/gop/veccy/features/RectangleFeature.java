@@ -1,4 +1,4 @@
-package at.fhhgb.mtd.gop.at.fhhgb.mtd.gop.veccy.features;
+package at.fhhgb.mtd.gop.veccy.features;
 
 import at.fhhgb.mtd.gop.veccy.model.CanvasModel;
 import at.fhhgb.mtd.gop.veccy.model.NamedFeature;
@@ -12,7 +12,6 @@ public class RectangleFeature implements NamedFeature {
     private Rectangle currentRectangle;
     private int originX;
     private int originY;
-
     private boolean isSelected;
 
     public RectangleFeature(CanvasModel model) {

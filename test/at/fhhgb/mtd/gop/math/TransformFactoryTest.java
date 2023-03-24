@@ -26,16 +26,10 @@ class TransformFactoryTest {
 
     @Test
     void testCreateHorizontalMirroring() {
-
-        //Fragen
         Vector3 vec = new Vector3(new double[]{5.0, 5.0, 1.0});
         Matrix3 horizontalMirroring = TransformFactory.createHorizontalMirroring();
         Vector3 mirroredVec = horizontalMirroring.mult(vec);
-
-        /*for (int i = 0; i < 3; i++) {
-            System.out.println(mirroredVec.getValues()[i]);
-        }*/
-        //assertTrue(Arrays.equals(rotatedVec.getValues(), new double[]{-5.0, 5.0, 1.0}));
+        assertTrue(Arrays.equals(mirroredVec.getValues(), new double[]{-5.0, 5.0, 1.0}));
     }
 
     @Test
@@ -43,7 +37,7 @@ class TransformFactoryTest {
         Vector3 vec = new Vector3(new double[]{5.0, 5.0, 1.0});
         Matrix3 verticalMirroring = TransformFactory.createVerticalMirroring();
         Vector3 mirroredVec = verticalMirroring.mult(vec);
-        assertTrue(Arrays.equals(mirroredVec.getValues(), new double[]{-5.0, -5.0, 1.0}));
+        assertTrue(Arrays.equals(mirroredVec.getValues(), new double[]{5.0, -5.0, 1.0}));
     }
 
     @Test
