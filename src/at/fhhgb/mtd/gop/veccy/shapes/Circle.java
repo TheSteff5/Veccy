@@ -3,14 +3,11 @@ package at.fhhgb.mtd.gop.veccy.shapes;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
-public class Circle implements DrawableShape {
-
-    private Point point;
+public class Circle extends Shape {
     private int radius;
-    private Color fillColor;
 
     public Circle(Point point, int radius) {
-        this.point = point;
+        super(point.getX(), point.getY());
         this.radius = radius;
     }
 
@@ -24,15 +21,7 @@ public class Circle implements DrawableShape {
     }
 
     public Rectangle boundingBox() {
-        return new Rectangle(new Point(this.point.getX() - this.radius, this.point.getY() - this.radius), this.radius * 2, this.radius * 2);
-    }
-
-    public Point getPoint() {
-        return point;
-    }
-
-    public void setPoint(Point point) {
-        this.point = point;
+        return new Rectangle(new Point(this.getX() - this.radius, this.getY() - this.radius), this.radius * 2, this.radius * 2);
     }
 
     public int getRadius() {
@@ -43,17 +32,10 @@ public class Circle implements DrawableShape {
         this.radius = radius;
     }
 
-    public Color getColor() {
-        return fillColor;
-    }
-
-    public void setColor(Color fillColor) {
-        this.fillColor = fillColor;
-    }
-
     @Override
     public void draw(GraphicsContext graphicsContext) {
-        graphicsContext.setFill(this.fillColor);
-        graphicsContext.fillOval(this.point.getX() - radius, this.point.getY() - radius, this.radius * 2, this.radius * 2);
+        super.draw(graphicsContext);
+        graphicsContext.fillOval(this.getX() - radius, this.getY() - radius, this.radius * 2, this.radius * 2);
+        graphicsContext.strokeOval(this.getX() - radius, this.getY() - radius, this.radius * 2, this.radius * 2);
     }
 }

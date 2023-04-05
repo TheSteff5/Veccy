@@ -19,13 +19,13 @@ public class Veccy extends Application {
         CanvasModel model = veccyGUI.getModel();
 
         RectangleFeature rectangleF = new RectangleFeature(model);
-        //CircleFeature circleF = new CircleFeature(model);
+        CircleFeature circleF = new CircleFeature(model);
         LineFeature lineF = new LineFeature(model);
         PointFeature pointF = new PointFeature(model);
 
 
         model.addFeature(rectangleF);
-        //model.addFeature(circleF);
+        model.addFeature(circleF);
         model.addFeature(lineF);
         model.addFeature(pointF);
 
