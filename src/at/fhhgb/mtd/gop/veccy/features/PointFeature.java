@@ -37,8 +37,10 @@ public class PointFeature implements NamedFeature {
             this.originX = i;
             this.originY = i1;
 
-            Point point = new Point(this.originX, this.originY, this.model.getCurrentFillColor());
+            Point point = new Point(this.originX, this.originY);
             this.currentPoint = point;
+            this.currentPoint.setFillColor(this.model.getCurrentFillColor());
+            this.currentPoint.setStrokeColor(this.model.getCurrentStrokeColor());
             this.model.addShape(currentPoint);
         }
     }
@@ -47,7 +49,10 @@ public class PointFeature implements NamedFeature {
     public void onMouseDrag(int i, int i1) {
         if (this.isSelected) {
             if (currentPoint != null) {
-                Point point = new Point(i, i1, this.model.getCurrentFillColor());
+                Point point = new Point(i, i1);
+                this.currentPoint = point;
+                this.currentPoint.setFillColor(this.model.getCurrentFillColor());
+                this.currentPoint.setStrokeColor(this.model.getCurrentStrokeColor());
                 this.model.addShape(point);
             }
         }

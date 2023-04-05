@@ -49,7 +49,9 @@ public class RectangleFeature implements NamedFeature {
                 this.originX = i;
                 this.originY = i1;
 
-                Rectangle rectangle = new Rectangle(new Point(this.originX, this.originY), 0, 0, this.model.getCurrentFillColor());
+                Rectangle rectangle = new Rectangle(new Point(this.originX, this.originY), 0, 0);
+                rectangle.setFillColor(this.model.getCurrentFillColor());
+                rectangle.setStrokeColor(this.model.getCurrentStrokeColor());
                 this.currentRectangle = rectangle;
                 this.model.addShape(currentRectangle);
 

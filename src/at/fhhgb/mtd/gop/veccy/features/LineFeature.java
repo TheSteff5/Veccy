@@ -47,9 +47,10 @@ public class LineFeature implements NamedFeature {
             if (currentLine == null) {
                 this.originX = i;
                 this.originY = i1;
-                Line line = new Line(this.originX, this.originY, 0, 0, this.model.getCurrentFillColor());
+                Line line = new Line(this.originX, this.originY, 0, 0);
+                line.setFillColor(this.model.getCurrentFillColor());
+                line.setStrokeColor(this.model.getCurrentStrokeColor());
                 this.currentLine = line;
-
             } else {
                 this.currentLine.setX2(i);
                 this.currentLine.setY2(i1);
