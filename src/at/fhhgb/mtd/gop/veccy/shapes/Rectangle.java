@@ -1,5 +1,8 @@
 package at.fhhgb.mtd.gop.veccy.shapes;
 
+import at.fhhgb.mtd.gop.math.Matrix3;
+import at.fhhgb.mtd.gop.math.TransformFactory;
+import at.fhhgb.mtd.gop.math.Vector3;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
@@ -45,10 +48,39 @@ public class Rectangle extends Shape {
         this.height = height;
     }
 
+    private double[][] getCoordinates() {
+        Vector3 leftTop = new Vector3(new double[]{this.getX(), this.getY(), 1});
+        Vector3 rightTop = new Vector3(new double[]{this.getX() + this.getWidth(), this.getY(), 1});
+        Vector3 leftBottom = new Vector3(new double[]{this.getX(), this.getY() + this.getHeight(), 1});
+        Vector3 rightBottom = new Vector3(new double[]{this.getX() + this.getWidth(), this.getY() + this.getHeight(), 1});
+        Vector3[] rectangleCorners = new Vector3[]{leftTop, rightTop, rightBottom, leftBottom};
+
+        // ask Prof why the translation is not working inversed, this should be de translateOrigin -(this.getX() + this.getWidth() / 2), -(this.getY() + this.getHeight() / 2)
+        Matrix3 translateOrigin = TransformFactory.createTranslation(this.getX() + this.getWidth() / 2, this.getY() + this.getHeight() / 2);
+        Matrix3 inverseTranslate = TransformFactory.createTranslation(-(this.getX() + this.getWidth() / 2), -(this.getY() + this.getHeight() / 2));
+
+        if (this.transform != null) {
+            for (int i = 0; i < rectangleCorners.length; i++) {
+                rectangleCorners[i] = translateOrigin.mult(this.transform).mult(inverseTranslate).mult(rectangleCorners[i]);
+            }
+        }
+
+        double[][] coordinates = new double[2][rectangleCorners.length];
+        for (int i = 0; i < rectangleCorners.length; i++) {
+            coordinates[0][i] = rectangleCorners[i].getValues()[0];
+            coordinates[1][i] = rectangleCorners[i].getValues()[1];
+        }
+
+        return coordinates;
+    }
+
     @Override
     public void draw(GraphicsContext graphicsContext) {
         super.draw(graphicsContext);
-        graphicsContext.fillRect(this.getX(), this.getY(), this.width, this.height);
-        graphicsContext.strokeRect(this.getX(), this.getY(), this.width, this.height);
+        double[][] coordinates = this.getCoordinates();
+        graphicsContext.fillPolygon(coordinates[0], coordinates[1], coordinates[0].length);
+        graphicsContext.strokePolygon(coordinates[0], coordinates[1], coordinates[0].length);
+       /* graphicsContext.fillRect(this.getX(), this.getY(), this.width, this.height);
+        graphicsContext.strokeRect(this.getX(), this.getY(), this.width, this.height);*/
     }
 }
