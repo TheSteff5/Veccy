@@ -32,7 +32,7 @@ public class Veccy extends Application {
         model.addFeature(circleF);
         model.addFeature(lineF);
         model.addFeature(pointF);
-        model.addFeature(polygonF);
+      /*  model.addFeature(polygonF);*/
         model.addFeature(pathF);
 
       /*  Rectangle r1 = new Rectangle(new Point(10, 10), 100, 100);
