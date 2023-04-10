@@ -80,7 +80,5 @@ public class Rectangle extends Shape {
         double[][] coordinates = this.getCoordinates();
         graphicsContext.fillPolygon(coordinates[0], coordinates[1], coordinates[0].length);
         graphicsContext.strokePolygon(coordinates[0], coordinates[1], coordinates[0].length);
-       /* graphicsContext.fillRect(this.getX(), this.getY(), this.width, this.height);
-        graphicsContext.strokeRect(this.getX(), this.getY(), this.width, this.height);*/
     }
 }
