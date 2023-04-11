@@ -16,7 +16,6 @@ public class Path extends Shape {
     }
 
     private double[][] getCoordinates() {
-
         double[][] coordinates = new double[2][pathCoordinates.size()];
         for (int i = 0; i < pathCoordinates.size(); i++) {
             coordinates[0][i] = pathCoordinates.get(i).getValues()[0];
@@ -30,19 +29,10 @@ public class Path extends Shape {
         this.pathCoordinates.add(new Vector3(new double[]{point.getX(), point.getY(), 1}));
     }
 
-    public LinkedList<Vector3> getPathCoordinates() {
-        return pathCoordinates;
-    }
-
-    public void setPathCoordinates(LinkedList<Vector3> pathCoordinates) {
-        this.pathCoordinates = pathCoordinates;
-    }
-
     @Override
     public void draw(GraphicsContext graphicsContext) {
         super.draw(graphicsContext);
         double[][] coordinates = this.getCoordinates();
-        graphicsContext.fillPolygon(coordinates[0], coordinates[1], coordinates[0].length);
-        graphicsContext.strokePolygon(coordinates[0], coordinates[1], coordinates[0].length);
+        graphicsContext.strokePolyline(coordinates[0], coordinates[1], coordinates[0].length);
     }
 }

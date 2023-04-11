@@ -6,30 +6,26 @@ import javafx.scene.canvas.GraphicsContext;
 import java.util.LinkedList;
 
 public class Polygon extends Shape {
-    LinkedList<Vector3> coordinates = new LinkedList<>();
+    LinkedList<Vector3> polygonCoordinates = new LinkedList<>();
 
-    public Polygon(LinkedList<Vector3> coordinates) {
-        super((int) coordinates.get(0).getValues()[0], (int) coordinates.get(0).getValues()[1]);
-        this.coordinates = coordinates;
+    public Polygon(int x, int y) {
+        super(x, y);
+        this.addPolygonCoordinate(new Point(x, y));
     }
 
     private double[][] getCoordinates() {
-        double[][] coordinates = new double[2][this.coordinates.size()];
 
-        for (int i = 0; i < this.coordinates.size(); i++) {
-            coordinates[0][i] = this.coordinates.get(i).getValues()[0];
-            coordinates[1][i] = this.coordinates.get(i).getValues()[1];
+        double[][] coordinates = new double[2][polygonCoordinates.size()];
+        for (int i = 0; i < polygonCoordinates.size(); i++) {
+            coordinates[0][i] = polygonCoordinates.get(i).getValues()[0];
+            coordinates[1][i] = polygonCoordinates.get(i).getValues()[1];
         }
 
         return coordinates;
     }
 
-    public LinkedList<Vector3> getLinkedListCoordinates() {
-        return this.coordinates;
-    }
-
-    public void setCoordinates(LinkedList<Vector3> coordinates) {
-        this.coordinates = coordinates;
+    public void addPolygonCoordinate(Point point) {
+        this.polygonCoordinates.add(new Vector3(new double[]{point.getX(), point.getY(), 1}));
     }
 
     @Override

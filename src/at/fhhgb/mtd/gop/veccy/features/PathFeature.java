@@ -11,14 +11,12 @@ import java.util.LinkedList;
 public class PathFeature implements NamedFeature {
     private CanvasModel model;
     private Path currentPath;
-    private PolygonFeature polygonFeature;
     private int originX;
     private int originY;
     private boolean isSelected;
 
-    public PathFeature(CanvasModel model, PolygonFeature polygonFeature) {
+    public PathFeature(CanvasModel model) {
         this.model = model;
-        this.polygonFeature = polygonFeature;
     }
 
     @Override
@@ -34,7 +32,7 @@ public class PathFeature implements NamedFeature {
     @Override
     public void onDeselect() {
         this.isSelected = false;
-        this.polygonFeature.setCurrentPolygon(new Polygon(this.currentPath.getPathCoordinates()));
+        this.currentPath = null;
     }
 
     @Override
@@ -49,7 +47,6 @@ public class PathFeature implements NamedFeature {
                 this.currentPath.addPathCoordinate(new Point(this.originX, this.originY));
             }
 
-            this.currentPath.setFillColor(this.model.getCurrentFillColor());
             this.currentPath.setStrokeColor(this.model.getCurrentStrokeColor());
             this.model.addShape(currentPath);
         }

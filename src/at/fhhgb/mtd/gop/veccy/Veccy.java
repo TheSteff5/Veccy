@@ -26,7 +26,7 @@ public class Veccy extends Application {
         LineFeature lineF = new LineFeature(model);
         PointFeature pointF = new PointFeature(model);
         PolygonFeature polygonF = new PolygonFeature(model);
-        PathFeature pathF = new PathFeature(model, polygonF);
+        PathFeature pathF = new PathFeature(model);
 
         model.addFeature(rectangleF);
         model.addFeature(circleF);

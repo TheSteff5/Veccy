@@ -55,7 +55,6 @@ public class Rectangle extends Shape {
         Vector3 rightBottom = new Vector3(new double[]{this.getX() + this.getWidth(), this.getY() + this.getHeight(), 1});
         Vector3[] rectangleCorners = new Vector3[]{leftTop, rightTop, rightBottom, leftBottom};
 
-        // ask Prof why the translation is not working inversed, this should be de translateOrigin -(this.getX() + this.getWidth() / 2), -(this.getY() + this.getHeight() / 2)
         Matrix3 translateOrigin = TransformFactory.createTranslation(this.getX() + this.getWidth() / 2, this.getY() + this.getHeight() / 2);
         Matrix3 inverseTranslate = TransformFactory.createTranslation(-(this.getX() + this.getWidth() / 2), -(this.getY() + this.getHeight() / 2));
 

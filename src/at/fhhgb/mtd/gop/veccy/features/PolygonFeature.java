@@ -22,14 +22,6 @@ public class PolygonFeature implements NamedFeature {
         this.model = model;
     }
 
-    public Polygon getCurrentPolygon() {
-        return currentPolygon;
-    }
-
-    public void setCurrentPolygon(Polygon currentPolygon) {
-        this.currentPolygon = currentPolygon;
-    }
-
     @Override
     public String getName() {
         return "Polygon";
@@ -43,65 +35,28 @@ public class PolygonFeature implements NamedFeature {
     @Override
     public void onDeselect() {
         this.isSelected = false;
+        this.currentPolygon = null;
     }
 
     @Override
     public void onMouseClick(int i, int i1) {
         if (this.isSelected) {
-            if (currentPolygon != null) {
-                this.originX = i;
-                this.originY = i1;
+            this.originX = i;
+            this.originY = i1;
 
-                LinkedList<Vector3> newCoordinates = new LinkedList<>();
-
-                for (int j = 0; j < this.currentPolygon.getLinkedListCoordinates().size(); j++) {
-
-                    newCoordinates.add(TransformFactory.createTranslation((int) this.currentPolygon.getLinkedListCoordinates().get(j).getValues()[0], (int) this.currentPolygon.getLinkedListCoordinates().get(j).getValues()[1]).mult(new Vector3(new double[]{-i, -i1, 1})));
-                }
-
-
-                Polygon polygon = new Polygon(newCoordinates);
-                this.currentPolygon = polygon;
-                this.currentPolygon.setFillColor(this.model.getCurrentFillColor());
-                this.currentPolygon.setStrokeColor(this.model.getCurrentStrokeColor());
-                this.model.addShape(currentPolygon);
+            if (this.currentPolygon == null) {
+                this.currentPolygon = new Polygon(this.originX, this.originY);
+            } else {
+                this.currentPolygon.addPolygonCoordinate(new Point(this.originX, this.originY));
             }
 
+            this.currentPolygon.setFillColor(this.model.getCurrentFillColor());
+            this.currentPolygon.setStrokeColor(this.model.getCurrentStrokeColor());
+            this.model.addShape(this.currentPolygon);
         }
     }
 
     @Override
     public void onMouseDrag(int i, int i1) {
-        if (this.isSelected) {
-            if (currentPolygon == null) {
-                this.originX = i;
-                this.originY = i1;
-
-                LinkedList<Vector3> newCoordinates = new LinkedList<>();
-
-                for (int j = 0; j < this.currentPolygon.getLinkedListCoordinates().size(); j++) {
-
-                    newCoordinates.add(TransformFactory.createTranslation((int) this.currentPolygon.getLinkedListCoordinates().get(i).getValues()[0], (int) this.currentPolygon.getLinkedListCoordinates().get(i).getValues()[1]).mult(this.currentPolygon.getLinkedListCoordinates().get(i)));
-                }
-
-
-                Polygon polygon = new Polygon(newCoordinates);
-
-
-
-              /*  Rectangle rectangle = new Rectangle(new Point(this.originX, this.originY), 0, 0);
-                rectangle.setFillColor(this.model.getCurrentFillColor());
-                rectangle.setStrokeColor(this.model.getCurrentStrokeColor());
-                this.currentPolygon = rectangle;
-                this.model.addShape(currentPolygon);*/
-
-            } else {
-
-     /*           this.currentPolygon.getCoordinates()
-
-                this.currentPolygon.setWidth(i - this.originX);
-                this.currentPolygon.setHeight(i1 - this.originY);*/
-            }
-        }
     }
 }
