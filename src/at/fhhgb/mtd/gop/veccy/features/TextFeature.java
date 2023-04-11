@@ -2,23 +2,23 @@ package at.fhhgb.mtd.gop.veccy.features;
 
 import at.fhhgb.mtd.gop.veccy.model.CanvasModel;
 import at.fhhgb.mtd.gop.veccy.model.NamedFeature;
-import at.fhhgb.mtd.gop.veccy.shapes.Path;
-import at.fhhgb.mtd.gop.veccy.shapes.Point;
+import at.fhhgb.mtd.gop.veccy.shapes.Text;
+import at.fhhgb.mtd.gop.veccy.view.BlockingTextInputDialog;
 
-public class PathFeature implements NamedFeature {
+public class TextFeature implements NamedFeature {
     private CanvasModel model;
-    private Path currentPath;
+    private Text currentText;
     private int originX;
     private int originY;
     private boolean isSelected;
 
-    public PathFeature(CanvasModel model) {
+    public TextFeature(CanvasModel model) {
         this.model = model;
     }
 
     @Override
     public String getName() {
-        return "Path";
+        return "Text";
     }
 
     @Override
@@ -29,7 +29,6 @@ public class PathFeature implements NamedFeature {
     @Override
     public void onDeselect() {
         this.isSelected = false;
-        this.currentPath = null;
     }
 
     @Override
@@ -38,14 +37,10 @@ public class PathFeature implements NamedFeature {
             this.originX = i;
             this.originY = i1;
 
-            if (this.currentPath == null) {
-                this.currentPath = new Path(this.originX, this.originY);
-            } else {
-                this.currentPath.addPathCoordinate(new Point(this.originX, this.originY));
-            }
-
-            this.currentPath.setStrokeColor(this.model.getCurrentStrokeColor());
-            this.model.addShape(currentPath);
+            String textValue = BlockingTextInputDialog.requestTextInput();
+            Text text = new Text(this.originX, this.originY, textValue);
+            this.currentText = text;
+            this.model.addShape(currentText);
         }
     }
 

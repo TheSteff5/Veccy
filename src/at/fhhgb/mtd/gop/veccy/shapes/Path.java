@@ -1,7 +1,5 @@
 package at.fhhgb.mtd.gop.veccy.shapes;
 
-import at.fhhgb.mtd.gop.math.Matrix3;
-import at.fhhgb.mtd.gop.math.TransformFactory;
 import at.fhhgb.mtd.gop.math.Vector3;
 import javafx.scene.canvas.GraphicsContext;
 

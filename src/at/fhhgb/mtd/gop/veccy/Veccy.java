@@ -27,6 +27,7 @@ public class Veccy extends Application {
         PointFeature pointF = new PointFeature(model);
         PolygonFeature polygonF = new PolygonFeature(model);
         PathFeature pathF = new PathFeature(model);
+        TextFeature textF = new TextFeature(model);
 
         model.addFeature(rectangleF);
         model.addFeature(circleF);
@@ -34,6 +35,7 @@ public class Veccy extends Application {
         model.addFeature(pointF);
         model.addFeature(polygonF);
         model.addFeature(pathF);
+        model.addFeature(textF);
 
       /*  Rectangle r1 = new Rectangle(new Point(10, 10), 100, 100);
         Rectangle r2 = new Rectangle(new Point(60-5, 60-5), 10, 10);

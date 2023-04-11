@@ -4,7 +4,6 @@ import at.fhhgb.mtd.gop.math.Matrix3;
 import at.fhhgb.mtd.gop.math.TransformFactory;
 import at.fhhgb.mtd.gop.math.Vector3;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.paint.Color;
 
 public class Rectangle extends Shape {
     private int width;

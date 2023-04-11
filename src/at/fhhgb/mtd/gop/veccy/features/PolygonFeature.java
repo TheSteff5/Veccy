@@ -1,16 +1,9 @@
 package at.fhhgb.mtd.gop.veccy.features;
 
-import at.fhhgb.mtd.gop.math.TransformFactory;
-import at.fhhgb.mtd.gop.math.Vector3;
 import at.fhhgb.mtd.gop.veccy.model.CanvasModel;
 import at.fhhgb.mtd.gop.veccy.model.NamedFeature;
-import at.fhhgb.mtd.gop.veccy.shapes.Path;
 import at.fhhgb.mtd.gop.veccy.shapes.Point;
 import at.fhhgb.mtd.gop.veccy.shapes.Polygon;
-import at.fhhgb.mtd.gop.veccy.shapes.Rectangle;
-
-import java.util.LinkedList;
-
 public class PolygonFeature implements NamedFeature {
     private CanvasModel model;
     private Polygon currentPolygon;

@@ -4,7 +4,6 @@ import at.fhhgb.mtd.gop.veccy.model.CanvasModel;
 import at.fhhgb.mtd.gop.veccy.model.NamedFeature;
 import at.fhhgb.mtd.gop.veccy.shapes.Point;
 import at.fhhgb.mtd.gop.veccy.shapes.Rectangle;
-import javafx.scene.paint.Color;
 
 public class RectangleFeature implements NamedFeature {
 

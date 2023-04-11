@@ -45,7 +45,6 @@ public class Circle extends Shape {
             circleCoordinatePairs[i] = new Vector3(new double[]{x, y, 1.0});
         }
 
-        // ask Prof why the translation is not working inversed, this should be de translateOrigin -(this.getX() + this.getWidth() / 2), -(this.getY() + this.getHeight() / 2)
         Matrix3 translateOrigin = TransformFactory.createTranslation(this.getX(), this.getY());
         Matrix3 inverseTranslate = TransformFactory.createTranslation(-this.getX(), -this.getY());
 

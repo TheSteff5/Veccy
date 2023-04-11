@@ -1,10 +1,7 @@
 package at.fhhgb.mtd.gop.veccy.features;
-
 import at.fhhgb.mtd.gop.veccy.model.CanvasModel;
 import at.fhhgb.mtd.gop.veccy.model.NamedFeature;
 import at.fhhgb.mtd.gop.veccy.shapes.Line;
-import at.fhhgb.mtd.gop.veccy.shapes.Point;
-import at.fhhgb.mtd.gop.veccy.shapes.Rectangle;
 
 public class LineFeature implements NamedFeature {
     private CanvasModel model;
