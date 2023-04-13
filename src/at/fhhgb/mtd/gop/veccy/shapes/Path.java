@@ -13,7 +13,7 @@ public class Path extends Shape {
         this.addPathCoordinate(new Point(x, y));
     }
 
-    private double[][] getCoordinates() {
+    public double[][] getCoordinates() {
         double[][] coordinates = new double[2][pathCoordinates.size()];
         for (int i = 0; i < pathCoordinates.size(); i++) {
             coordinates[0][i] = pathCoordinates.get(i).getValues()[0];

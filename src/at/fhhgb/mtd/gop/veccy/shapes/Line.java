@@ -22,6 +22,11 @@ public class Line extends Shape {
         return new Rectangle(new Point(this.getX() > this.x2 ? this.x2 : this.getX(), this.getY() > this.y2 ? this.y2 : this.getY()), Math.abs(this.x2 - this.getX()), Math.abs(this.y2 - this.getY()));
     }
 
+    @Override
+    public double[][] getCoordinates() {
+        return new double[0][];
+    }
+
     public int getX2() {
         return x2;
     }

@@ -16,6 +16,11 @@ public class Point extends Shape {
     }
 
     @Override
+    public double[][] getCoordinates() {
+        return new double[0][];
+    }
+
+    @Override
     public void draw(GraphicsContext graphicsContext) {
         super.draw(graphicsContext);
         graphicsContext.fillOval(this.getX(), this.getY(), 4, 4);

@@ -35,7 +35,7 @@ public class Circle extends Shape {
         this.radius = radius;
     }
 
-    private double[][] getCoordinates() {
+    public double[][] getCoordinates() {
         Vector3[] circleCoordinatePairs = new Vector3[256];
         double step = (2 * Math.PI) / circleCoordinatePairs.length;
 

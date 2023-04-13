@@ -13,7 +13,7 @@ public class Polygon extends Shape {
         this.addPolygonCoordinate(new Point(x, y));
     }
 
-    private double[][] getCoordinates() {
+    public double[][] getCoordinates() {
 
         double[][] coordinates = new double[2][polygonCoordinates.size()];
         for (int i = 0; i < polygonCoordinates.size(); i++) {

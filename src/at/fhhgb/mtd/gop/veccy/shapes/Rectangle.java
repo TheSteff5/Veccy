@@ -47,7 +47,7 @@ public class Rectangle extends Shape {
         this.height = height;
     }
 
-    private double[][] getCoordinates() {
+    public double[][] getCoordinates() {
         Vector3 leftTop = new Vector3(new double[]{this.getX(), this.getY(), 1});
         Vector3 rightTop = new Vector3(new double[]{this.getX() + this.getWidth(), this.getY(), 1});
         Vector3 leftBottom = new Vector3(new double[]{this.getX(), this.getY() + this.getHeight(), 1});

@@ -20,6 +20,11 @@ public class Text extends Shape {
     }
 
     @Override
+    public double[][] getCoordinates() {
+        return new double[0][];
+    }
+
+    @Override
     public void draw(GraphicsContext graphicsContext) {
         super.draw(graphicsContext);
         graphicsContext.fillText(this.text, this.getX(), this.getY());
