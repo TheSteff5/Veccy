@@ -87,6 +87,10 @@ public abstract class Shape implements DrawableShape {
         System.out.println(maxX);
         System.out.println(minY);
         System.out.println(maxY);
+        minX= minX-4;
+        minY= minY-4;
+        maxX = maxX+4;
+        maxY = maxY+4;
 
         return new Rectangle(new Point((int) minX, (int) minY), (int)(maxX - minX), (int)(maxY - minY));
 

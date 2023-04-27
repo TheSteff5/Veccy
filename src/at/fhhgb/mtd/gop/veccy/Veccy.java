@@ -42,21 +42,35 @@ public class Veccy extends Application {
         Rectangle r1 = new Rectangle(new Point(30, 30), 100, 100);
         shapes.add(r1);
         model.addShape(r1);
-        model.setShapeCreationHandler(shape -> {
+        Circle c1 = new Circle(new Point(500, 500), 30);
+        shapes.add(c1);
+        model.addShape(c1);
+        model.setShapeCreationHandler(s -> {
+            shapes.add((Shape)s);
 
+            //if(s)
 
+   //         model.addShape(s) ;
         });
 
-        //model.setCurrentlySelectedShapeHandler();
+        
+
         model.setCurrentlySelectedShapeHandler(n -> {
-            System.out.println("Hello World");
-            System.out.println(n);
+            for (Shape shape : shapes) {
+                shape.setSelected(false);
+            }
+            shapes.get(n).setSelected(true);
+        });
+
+        model.setShapeDeletionHandler(n -> {
+            System.out.println("Deleted" + n);
+            model.removeShape(shapes.get(n));
+            shapes.remove(shapes.get(n));
+
         });
 
 
         // rotation test
-
-
 
 
     }
