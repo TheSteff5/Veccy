@@ -48,10 +48,10 @@ public class LineFeature implements NamedFeature {
                 line.setFillColor(this.model.getCurrentFillColor());
                 line.setStrokeColor(this.model.getCurrentStrokeColor());
                 this.currentLine = line;
+                this.model.addShape(this.currentLine);
             } else {
                 this.currentLine.setX2(i);
                 this.currentLine.setY2(i1);
-                this.model.addShape(this.currentLine);
             }
         }
     }

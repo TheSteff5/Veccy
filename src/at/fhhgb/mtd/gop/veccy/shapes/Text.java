@@ -21,12 +21,14 @@ public class Text extends Shape {
 
     @Override
     public double[][] getCoordinates() {
-        return new double[0][];
+        return new double[][] {{getX(), getX() + text.length() * 6},
+                {getY(), getY() - 12}};
     }
 
     @Override
     public void draw(GraphicsContext graphicsContext) {
         super.draw(graphicsContext);
+        double[][] coordinates = this.getCoordinates();
         graphicsContext.fillText(this.text, this.getX(), this.getY());
         graphicsContext.strokeText(this.text, this.getX(), this.getY());
     }

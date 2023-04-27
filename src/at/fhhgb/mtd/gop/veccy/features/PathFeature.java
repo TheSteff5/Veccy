@@ -40,12 +40,11 @@ public class PathFeature implements NamedFeature {
 
             if (this.currentPath == null) {
                 this.currentPath = new Path(this.originX, this.originY);
+                this.model.addShape(currentPath);
             } else {
                 this.currentPath.addPathCoordinate(new Point(this.originX, this.originY));
             }
-
             this.currentPath.setStrokeColor(this.model.getCurrentStrokeColor());
-            this.model.addShape(currentPath);
         }
     }
 

@@ -52,7 +52,7 @@ public class RectangleFeature implements NamedFeature {
                 rectangle.setFillColor(this.model.getCurrentFillColor());
                 rectangle.setStrokeColor(this.model.getCurrentStrokeColor());
                 this.currentRectangle = rectangle;
-                this.model.addShape(currentRectangle);
+                this.model.addShape(this.currentRectangle);
 
             } else {
                 this.currentRectangle.setWidth(i - this.originX);

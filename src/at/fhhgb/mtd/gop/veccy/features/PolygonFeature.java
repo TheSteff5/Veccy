@@ -4,6 +4,7 @@ import at.fhhgb.mtd.gop.veccy.model.CanvasModel;
 import at.fhhgb.mtd.gop.veccy.model.NamedFeature;
 import at.fhhgb.mtd.gop.veccy.shapes.Point;
 import at.fhhgb.mtd.gop.veccy.shapes.Polygon;
+
 public class PolygonFeature implements NamedFeature {
     private CanvasModel model;
     private Polygon currentPolygon;
@@ -39,13 +40,14 @@ public class PolygonFeature implements NamedFeature {
 
             if (this.currentPolygon == null) {
                 this.currentPolygon = new Polygon(this.originX, this.originY);
+                this.model.addShape(this.currentPolygon);
             } else {
                 this.currentPolygon.addPolygonCoordinate(new Point(this.originX, this.originY));
             }
 
             this.currentPolygon.setFillColor(this.model.getCurrentFillColor());
             this.currentPolygon.setStrokeColor(this.model.getCurrentStrokeColor());
-            this.model.addShape(this.currentPolygon);
+
         }
     }
 

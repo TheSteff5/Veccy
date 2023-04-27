@@ -74,23 +74,20 @@ public abstract class Shape implements DrawableShape {
         }
 
         for (int i = 0; i < this.getCoordinates()[1].length; i++) {
-            if (this.getCoordinates()[0][i] > maxY) {
-                maxY = this.getCoordinates()[0][i];
+            if (this.getCoordinates()[1][i] > maxY) {
+                maxY = this.getCoordinates()[1][i];
             }
 
-            if (this.getCoordinates()[0][i] < minY) {
-                minY = this.getCoordinates()[0][i];
+            if (this.getCoordinates()[1][i] < minY) {
+                minY = this.getCoordinates()[1][i];
             }
         }
 
-        System.out.println(minX);
-        System.out.println(maxX);
-        System.out.println(minY);
-        System.out.println(maxY);
-        minX= minX-4;
-        minY= minY-4;
-        maxX = maxX+4;
-        maxY = maxY+4;
+        // is a spacing around the object, so you can see the boundingBox better
+        minX= minX-2;
+        minY= minY-2;
+        maxX = maxX+2;
+        maxY = maxY+2;
 
         return new Rectangle(new Point((int) minX, (int) minY), (int)(maxX - minX), (int)(maxY - minY));
 
@@ -102,7 +99,7 @@ public abstract class Shape implements DrawableShape {
         // Zeichne eine Bounding Box, sofern das Shape selektiert ist
         if (isSelected()) {
             Rectangle bb = this.getBoundingBox();
-            graphicsContext.setStroke(Color.GREEN);
+            graphicsContext.setStroke(Color.RED);
             graphicsContext.strokeRect(bb.getX(), bb.getY(),
                     bb.getWidth(), bb.getHeight());
         }

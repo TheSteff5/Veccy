@@ -1,5 +1,8 @@
 package at.fhhgb.mtd.gop.veccy.shapes;
 
+import at.fhhgb.mtd.gop.math.Matrix3;
+import at.fhhgb.mtd.gop.math.TransformFactory;
+import at.fhhgb.mtd.gop.math.Vector3;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
@@ -24,7 +27,31 @@ public class Line extends Shape {
 
     @Override
     public double[][] getCoordinates() {
-        return new double[0][];
+        double width = this.getX2() - this.getX();
+        double height = this.getY2() - this.getY();
+
+        Vector3 leftTop = new Vector3(new double[]{this.getX(), this.getY(), 1});
+        Vector3 rightTop = new Vector3(new double[]{this.getX() + width, this.getY(), 1});
+        Vector3 leftBottom = new Vector3(new double[]{this.getX(), this.getY() + height, 1});
+        Vector3 rightBottom = new Vector3(new double[]{this.getX() + width, this.getY() + height, 1});
+        Vector3[] rectangleCorners = new Vector3[]{leftTop, rightTop, rightBottom, leftBottom};
+
+        Matrix3 translateOrigin = TransformFactory.createTranslation(this.getX() + (int)width / 2, this.getY() + (int)height / 2);
+        Matrix3 inverseTranslate = TransformFactory.createTranslation(-(this.getX() + (int)width / 2), -(this.getY() + (int)height / 2));
+
+        if (this.transform != null) {
+            for (int i = 0; i < rectangleCorners.length; i++) {
+                rectangleCorners[i] = translateOrigin.mult(this.transform).mult(inverseTranslate).mult(rectangleCorners[i]);
+            }
+        }
+
+        double[][] coordinates = new double[2][rectangleCorners.length];
+        for (int i = 0; i < rectangleCorners.length; i++) {
+            coordinates[0][i] = rectangleCorners[i].getValues()[0];
+            coordinates[1][i] = rectangleCorners[i].getValues()[1];
+        }
+
+        return coordinates;
     }
 
     public int getX2() {
