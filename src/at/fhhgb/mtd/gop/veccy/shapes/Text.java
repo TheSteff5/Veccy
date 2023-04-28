@@ -1,5 +1,7 @@
 package at.fhhgb.mtd.gop.veccy.shapes;
 
+import at.fhhgb.mtd.gop.math.Matrix3;
+import at.fhhgb.mtd.gop.math.TransformFactory;
 import javafx.scene.canvas.GraphicsContext;
 
 public class Text extends Shape {

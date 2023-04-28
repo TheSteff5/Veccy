@@ -3,7 +3,9 @@ package at.fhhgb.mtd.gop.veccy;
 import at.fhhgb.mtd.gop.math.TransformFactory;
 import at.fhhgb.mtd.gop.veccy.features.*;
 import at.fhhgb.mtd.gop.veccy.model.CanvasModel;
+import at.fhhgb.mtd.gop.veccy.model.TransformConfig;
 import at.fhhgb.mtd.gop.veccy.shapes.*;
+import at.fhhgb.mtd.gop.veccy.view.BlockingTransformInputDialog;
 import javafx.application.Application;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -31,9 +33,9 @@ public class Veccy extends Application {
         PolygonFeature polygonF = new PolygonFeature(model);
         PathFeature pathF = new PathFeature(model);
         TextFeature textF = new TextFeature(model);
-        TranslateFeature translateF = new TranslateFeature();
-        RotateFeature rotateF = new RotateFeature();
-        TransformFeature transformF = new TransformFeature();
+        TranslateFeature translateF = new TranslateFeature(model, shapes);
+        RotateFeature rotateF = new RotateFeature(model, shapes);
+        TransformFeature transformF = new TransformFeature(model, shapes);
 
         model.addFeature(rectangleF);
         model.addFeature(circleF);
@@ -45,6 +47,7 @@ public class Veccy extends Application {
         model.addFeature(translateF);
         model.addFeature(rotateF);
         model.addFeature(transformF);
+
 
         Rectangle r1 = new Rectangle(new Point(30, 30), 100, 100);
         shapes.add(r1);

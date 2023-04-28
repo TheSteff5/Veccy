@@ -74,6 +74,9 @@ public class Line extends Shape {
     @Override
     public void draw(GraphicsContext graphicsContext) {
         super.draw(graphicsContext);
-        graphicsContext.strokeLine(this.getX(), this.getY(), this.x2, this.y2);
+        double[][] coordinates = this.getCoordinates();
+       /* graphicsContext.fillPolygon(coordinates[0], coordinates[1], coordinates[0].length);
+        graphicsContext.strokePolygon(coordinates[0], coordinates[1], coordinates[0].length);*/
+        graphicsContext.strokeLine(coordinates[0][0], coordinates[1][0], coordinates[0][2], coordinates[1][2]);
     }
 }
